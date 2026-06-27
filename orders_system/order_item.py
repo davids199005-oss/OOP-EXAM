@@ -1,7 +1,6 @@
 from orders_system.exceptions import DuplicateIdError
 
 class OrderItem:
-    """A single item inside an order. Each item has a unique id."""
 
     _used_ids: set[int] = set()
 

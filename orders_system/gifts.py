@@ -2,7 +2,6 @@ from orders_system.interfaces import Gift
 
 
 class SimpleGift(Gift):
-    """A basic gift. Opening it prints the congratulations message."""
 
     _CONGRATS_MESSAGE = "Congratulations! you got a new gift! Enjoy!"
 

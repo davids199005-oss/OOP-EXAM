@@ -1,5 +1,4 @@
 class DuplicateIdError(Exception):
-    """Raised when an entity is created with an already-used id."""
 
     def __init__(self, entity: str, entity_id: int) -> None:
         super().__init__(f"{entity} with id={entity_id} already exists.")
@@ -8,7 +7,6 @@ class DuplicateIdError(Exception):
 
 
 class NotVipCustomerError(Exception):
-    """Raised when a VIP order is made by a non-VIP customer."""
 
     def __init__(self, customer_id: int) -> None:
         super().__init__(
