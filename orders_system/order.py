@@ -7,12 +7,7 @@ from orders_system.exceptions import DuplicateIdError, NotVipCustomerError
 
 
 class Order:
-    """A customer order. Each order has a unique id.
-
-    Total price is calculated in the constructor as the sum of item prices.
-    For a VIP order, the customer's discount is applied; a VIP order made by
-    a non-VIP customer raises NotVipCustomerError.
-    """
+   
 
     _used_ids: set[int] = set[int]()
 
