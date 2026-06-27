@@ -10,7 +10,6 @@ class SimpleGift(Gift):
 
 
 class NamedGift(Gift):
-    """A gift that also carries a description (e.g. 'Coffee Mug')."""
 
     _CONGRATS_MESSAGE = "Congratulations! you got a new gift! Enjoy!"
 

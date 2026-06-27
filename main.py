@@ -11,7 +11,7 @@ from orders_system.bonus_animals import Spider, Cat, Fish
 
 def demo_regular_order() -> None:
     print("=== Regular order ===")
-    customer = Customer(
+    customer: Customer = Customer(
         customer_id=1,
         first_name="John",
         last_name="Doe",
@@ -19,11 +19,11 @@ def demo_regular_order() -> None:
         delivery_address="1 Main St",
         customer_type=CustomerType.REGULAR,
     )
-    items = [
+    items: list[OrderItem] = [
         OrderItem(item_id=101, name="Keyboard", price=120.0),
         OrderItem(item_id=102, name="Mouse", price=80.0),
     ]
-    order = Order(
+    order: Order = Order(
         order_id=1001,
         name="Office gear",
         delivery_address="1 Main St",
@@ -39,7 +39,7 @@ def demo_regular_order() -> None:
 
 def demo_vip_order() -> None:
     print("\n=== VIP order ===")
-    customer = Customer(
+    customer: Customer = Customer(
         customer_id=2,
         first_name="Jane",
         last_name="Smith",
@@ -48,7 +48,7 @@ def demo_vip_order() -> None:
         customer_type=CustomerType.VIP,
         customer_discount=15,  # 15%
     )
-    items = [
+    items: list[OrderItem] = [
         OrderItem(item_id=201, name="Laptop", price=1000.0),
         OrderItem(item_id=202, name="Headphones", price=200.0),
     ]
@@ -66,7 +66,7 @@ def demo_vip_order() -> None:
 
 def demo_vip_order_by_non_vip() -> None:
     print("\n=== VIP order by non-VIP customer (should fail) ===")
-    customer = Customer(
+    customer: Customer = Customer(
         customer_id=3,
         first_name="Bob",
         last_name="Brown",
@@ -74,7 +74,7 @@ def demo_vip_order_by_non_vip() -> None:
         delivery_address="3 Oak Rd",
         customer_type=CustomerType.REGULAR,
     )
-    items = [OrderItem(item_id=301, name="Watch", price=500.0)]
+    items: list[OrderItem] = [OrderItem(item_id=301, name="Watch", price=500.0)]
     try:
         Order(
             order_id=1003,
@@ -91,7 +91,7 @@ def demo_vip_order_by_non_vip() -> None:
 
 def demo_gifts() -> None:
     print("\n=== Gifts ===")
-    customer = Customer(
+    customer: Customer = Customer(
         customer_id=4,
         first_name="Alice",
         last_name="Green",
@@ -101,15 +101,15 @@ def demo_gifts() -> None:
         customer_discount=10,
     )
     customer.open_gift()  # no gift yet
-    customer.take_gift(SimpleGift())
+    customer.take_gift(gift=SimpleGift())
     customer.open_gift()
-    customer.take_gift(NamedGift("Coffee Mug"))
+    customer.take_gift(gift=NamedGift(description="Coffee Mug"))
     customer.open_gift()
 
 
 def demo_favorites_dedup() -> None:
     print("\n=== Favorites dedup (same name, different id) ===")
-    customer = Customer(
+    customer: Customer = Customer(
         customer_id=5,
         first_name="Eve",
         last_name="White",
@@ -141,17 +141,17 @@ def demo_favorites_dedup() -> None:
 
 def demo_bonus_animals() -> None:
     print("\n=== Bonus: animals ===")
-    spider = Spider()
+    spider: Spider = Spider()
     spider.walk()
     spider.eat()
 
-    cat = Cat("Whiskers")
+    cat = Cat(name="Whiskers")
     cat.walk()
     cat.play()
     cat.eat()
     print("Cat name:", cat.get_name())
 
-    fish = Fish("Nemo")
+    fish: Fish = Fish(name="Nemo")
     fish.walk()  # overridden
     fish.play()
     fish.eat()
